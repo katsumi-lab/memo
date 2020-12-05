@@ -19,12 +19,8 @@
 <h2>Practice</h2>
 <pre>
 <?php
-try{
-  $db = new PDO('mysql:dbname=mydb;host=localhost;charset=utf8','root','root');
-} catch(PDOException $e){
-    echo 'DB接続エラー:' . $e ->getMessage();
-}
-// try catchでエラー文を変更
+require('dbconnect.php');
+// データベースへの記述の共通化
 
 $memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
 ?>
