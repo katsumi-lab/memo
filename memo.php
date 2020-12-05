@@ -29,7 +29,7 @@ if(!is_numeric($id) || $id<= 0){
 }
 
 $memos = $db->prepare('SELECT * FROM memos WHERE id=?');
-$memos->execute(array());
+$memos->execute(array($id));
 $memo = $memos->fetch();
 ?>
 
@@ -37,6 +37,7 @@ $memo = $memos->fetch();
   <pre><?php print($memo['memo']); ?></pre>
 
   <a href="update.php?id=<?php print($memo['id']); ?>">編集する</a>
+  <a href="delete.php?id=<?php print($memo['id']); ?>">削除する</a>
   <a href="index.php">戻る</a>
 </article>
 

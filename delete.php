@@ -21,9 +21,15 @@
   <?php
     require('dbconnect.php');
     // データベースへの記述の共通化
-    $statement = $db->prepare('UPDATE memos SET memo=? WHERE id=?');    $statement->execute(array($_POST['memo'], $_POST['id']));
+
+    if (isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
+      $id = $_REQUEST['id'];
+      
+      $statement = $db->prepare('DELETE FROM memos WHERE id=?');
+      $statement->execute(array($id));
+    }
   ?>
-<p>メモの内容を変更しました</p>
+<p>メモを削除しました</p>
 </pre>
 <p><a href="index.php">戻る</a></p>
 </main>

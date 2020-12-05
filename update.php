@@ -22,6 +22,7 @@
 <?php 
   if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
+    
     $memos = $db->prepare('SELECT * FROM memos WHERE id=?');
     $memos->execute(array($id));
     $memo = $memos->fetch();
