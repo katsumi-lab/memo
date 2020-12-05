@@ -39,6 +39,11 @@ $memos->execute();
     <time><?php print($memo['created_at']); ?></time>
     <hr>
   <?php endwhile; ?>
+  
+  <?php if ($page >= 2): ?>
+    <a href="index.php?page=<?php print($page-1); ?>"><?php print($page-1); ?>ページ目へ</a>
+  <?php endif; ?>|
+  <a href="index.php?page=<?php print($page+1); ?>"><?php print($page+1); ?>ページ目へ</a>
 </article>
 
 <!-- mb_substr(表示する値,開始位置,表示する文字数) -->
