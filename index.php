@@ -42,8 +42,17 @@ $memos->execute();
   
   <?php if ($page >= 2): ?>
     <a href="index.php?page=<?php print($page-1); ?>"><?php print($page-1); ?>ページ目へ</a>
-  <?php endif; ?>|
+  <?php endif; ?>
+  |
+  <?php
+    $count = $db->query('SELECT COUNT(*) as cnt FROM memos');
+    $count = $count->fetch();
+    $max_page = ceil($count['cnt'] / 5);
+    if ($page < $max_page):
+  ?>
   <a href="index.php?page=<?php print($page+1); ?>"><?php print($page+1); ?>ページ目へ</a>
+    <?php endif; ?>
+    
 </article>
 
 <!-- mb_substr(表示する値,開始位置,表示する文字数) -->
