@@ -24,20 +24,17 @@ try{
 } catch(PDOException $e){
     echo 'DB接続エラー:' . $e ->getMessage();
 }
-// try catchでエラー文を変更
 
-$memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
+$memos = $db->query('SELECT * FROM memos WHERE id=1');
+$memo = $memos->fetch();
 ?>
 
 <article>
-  <?php while ($memo = $memos->fetch()): ?>
-    <p><a href="#"><?php print(mb_substr($memo['created_at'], 0 ,50)); ?></a></p> 
-    <time><?php print($memo['created_at']); ?></time>
-    <hr>
-  <?php endwhile; ?>
+  <pre><?php print($memo['memo']); ?></pre>
+
+  <a href="index.php">戻る</a>
 </article>
 
-<!-- mb_substr(表示する値,開始位置,表示する文字数) -->
 </main>
 </body>    
 </html>
